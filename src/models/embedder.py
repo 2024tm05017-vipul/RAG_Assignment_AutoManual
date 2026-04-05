@@ -49,6 +49,11 @@ class Embedder:
         else:
             embeddings = self.model.encode(text, batch_size=32)
         
+        # Normalize embeddings for cosine similarity
+        norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+        norms[norms == 0] = 1  # Avoid division by zero
+        embeddings = embeddings / norms
+        
         return embeddings.astype('float32')
     
     def get_embedding_dim(self) -> int:

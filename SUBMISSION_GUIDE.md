@@ -29,7 +29,7 @@ cp .env.example .env
 ### 2. Run the System
 ```bash
 # Start the FastAPI server
-python main.py
+cp .env.example .env
 
 # In another terminal, test the system:
 # Test health check
